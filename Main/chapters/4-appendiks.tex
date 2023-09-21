@@ -11,7 +11,7 @@ Det første man trenger for å kunne typecaste adressen til en modul inn i en \v
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.615]{Main/figures/gpio_addresse.JPG}
+    \includegraphics[scale=0.615]{figures/gpio_addresse.JPG}
     \caption{Startsadressene til GPIO-modulene (side 144 fra \texttt{nrf52833 Product Specification.pdf}.}
     \label{fig:app-gpio-modul}
 \end{figure}
@@ -20,7 +20,7 @@ Som dere kan se, så har noen moduler flere \textit{instanser} av en modul. Et a
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.61]{Main/figures/timer_memory.JPG}
+    \includegraphics[scale=0.61]{figures/timer_memory.JPG}
     \caption{Startadressene til \texttt{Timer}-modulen (side 446 fra \texttt{nrf52833 Product Specification.pdf}.}
     \label{fig:app-timerl}
 \end{figure}
@@ -35,7 +35,7 @@ Neste steg er å definere hvordan \verb|NRF_GPIO_REG0| ser ut. Strukturen til \v
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.61]{Main/figures/memory_stuff_gpio.JPG}
+    \includegraphics[scale=0.61]{figures/memory_stuff_gpio.JPG}
     \caption{Registrene i GPIO-modulene (side 144 fra \texttt{nrf52833 Product Specification.pdf}.}
     \label{fig:app-memory-struct}
 \end{figure}
@@ -200,7 +200,7 @@ For å løse dette, så må man gjøre følgende:
     \item Det skal nå komme opp en melding om en ny USB-enhet (se figur \ref{fig:picocom-terminal-output}).
     \begin{figure}[ht]
         \centering
-       \includegraphics[scale=0.4]{Main/figures/picocom.JPG}
+       \includegraphics[scale=0.4]{figures/picocom.JPG}
         \caption{Output fra terminalen.}
         \label{fig:picocom-terminal-output}
     \end{figure}
