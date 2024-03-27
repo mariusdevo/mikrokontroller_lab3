@@ -17,26 +17,26 @@ typedef struct {
 
 int main(){
 	// Configure LED Matrix
-	for(int i = 4; i <= 15; i++){
+	for(int i = 0; i <= 3; i++){
 		GPIO->DIRSET = (1 << i);
 		GPIO->OUTCLR = (1 << i);
 	}
 
 	// Configure buttons
-	GPIO->PIN_CNF[__BUTTON_A_PIN__] = 0;
-	GPIO->PIN_CNF[__BUTTON_B_PIN__] = 0;
+	GPIO->PIN_CNF[__BUTTON_1_PIN__] = 0;
+	GPIO->PIN_CNF[__BUTTON_2_PIN__] = 0;
 
 	int sleep = 0;
 	while(1){
 
-		/* Check if button B is pressed;
+		/* Check if button 1 is pressed;
 		 * turn on LED matrix if it is. */
 
-		/* Check if button A is pressed;
+		/* Check if button 2 is pressed;
 		 * turn off LED matrix if it is. */
 
 		sleep = 10000;
-		while(--sleep);
+		while(--sleep); // Delay
 	}
 	return 0;
 }
