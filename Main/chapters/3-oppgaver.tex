@@ -356,7 +356,7 @@ For å koble \verb|BUTTON 1|-knapphendelsen til forsyningsoppgavene, trenger vi 
 Denne kodesnutten setter registeret \verb|EventEndPoint| for \verb|PPI|-kanal \verb|0| til adressen av \verb|GPIOTE-EVENTS_IN[4]| - typecastet til en \verb|uint32_t|. Tilsvarende vil den sette registeret \verb|TaskEndPoint| for \verb|PPI|-kanal \verb|0| til adressen av \verb|GPIOTE->TASKS_OUT[0]| etter å ha typecastet den til en \verb|uint32_t|.
 
 
-Denne koden kan være litt kryptisk første gang man ser den, men om man tar seg litt tid til å lage en mental modell av hvor hver peker går, så ser man ganske fort at det er egentlig veldig rett frem.
+Denne koden kan være litt kryptisk første gang man ser den, men om man tar seg litt tid til å lage en mental modell av hvor hver peker går, så ser man ganske fort at det er egentlig veldig rett frem. 
 
 \begin{itemize}
     \item Sett de ulike \verb|PPI|-registrene til riktige verdier.
