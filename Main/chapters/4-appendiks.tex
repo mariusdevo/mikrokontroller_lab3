@@ -11,7 +11,7 @@ Det første man trenger for å kunne typecaste adressen til en modul inn i en \v
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.5]{Main/figures/gpio_addresse.png}
+    \includegraphics[scale=0.5]{figures/gpio_addresse.png}
     \caption{Startsadressene til GPIO-modulene (side 116 fra \texttt{nrf52832 Product Specification.pdf}).}
     \label{fig:app-gpio-modul}
 \end{figure}
@@ -219,10 +219,11 @@ Når vi debugger et program som kjører på datamaskinen vår, har vi direkte ti
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[scale=0.60]{Main/figures/nrf52_debug_swd.png}
+    \includegraphics[scale=0.60]{figures/nrf52_debug_swd.png}
     \caption{Visualisering av kommunikasjonslag}
     \label{fig:debugging_swd}
 \end{figure}
+
 
 For å få videresende informasjonen vi får fra mikrokontrolleren må vi bruke et program på interface MCU som fungerer som et kommunikasjonslag mellom vår datamaskin og target MCU. nRF52 DK sin interface MCU (nRF5340) er utstyrt med J-Link, som er et kraftig verktøy for feilsøking og programmering av target MCU (nRF52832). Den innebygde feilsøkingsprogrammet støtter feilsøking i monitormodus, en funksjon som gjør det mulig for utviklere å samhandle med mikrokontrollerens kjøringsmiljø i sanntid. Dette er spesielt nyttig ved feilsøking av komplekse problemer som krever mulighet til å inspisere og endre mikrokontrollerens tilstand (registerverdier etc.) mens koden kjører. Enkelt forklart blir denne informasjonen delt med interface MCU, som kan tolke og videresende informasjonen over til vår maskin over USB (se figur \ref{fig:debugging_swd}). 
 
