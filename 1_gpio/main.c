@@ -17,7 +17,7 @@ typedef struct {
 
 int main(){
 	// Configure LED Matrix
-	for(int i = 0; i <= 3; i++){
+	for(int i = 17; i <= 20; i++){
 		GPIO->DIRSET = (1 << i);
 		GPIO->OUTCLR = (1 << i);
 	}
