@@ -11,9 +11,16 @@ typedef struct {
 	volatile uint32_t DIR;
 	volatile uint32_t DIRSET;
 	volatile uint32_t DIRCLR;
+	volatile uint32_t LATCH;
+	volatile uint32_t DETECTMODE;
 	volatile uint32_t RESERVED1[__RESERVED1_SIZE__];
 	volatile uint32_t PIN_CNF[32];
 } NRF_GPIO_REGS;
+
+void button_init(){ 
+	GPIO->PIN_CNF[__BUTTON_1_PIN__] = (3 << 2);
+	// Fyll inn resten av knappene
+}
 
 int main(){
 	// Configure LED Matrix
@@ -22,9 +29,7 @@ int main(){
 		GPIO->OUTCLR = (1 << i);
 	}
 
-	// Configure buttons
-	GPIO->PIN_CNF[__BUTTON_1_PIN__] = 0;
-	GPIO->PIN_CNF[__BUTTON_2_PIN__] = 0;
+	// Configure buttons -> see button_init()
 
 	int sleep = 0;
 	while(1){
