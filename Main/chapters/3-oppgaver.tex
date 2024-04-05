@@ -55,11 +55,13 @@ Når denne er definert, kan vi eksempelvis endre \verb|OUT|-registret ved å kal
 
  Dere vil også se at medlemsvariabelen \verb|RESERVED0| i \verb|GPIO0| er en array av type \verb|volatile| \verb|uint32_t| med 321 elementer. Dette er fordi databladet forteller oss at \verb|OUT|-registeret i modulen \verb|GPIO0| har et offsett på 
  \verb|0x504| ($\text{504}_{\text{16}}$) fra modulens baseadresse. $\text{504}_{\text{16}}$ er det samme som $\text{1284}_{\text{10}}$. Altså er det 1284 byte mellom baseadressen og \verb|OUT|-registeret. Siden vi bruker en ordstørrelse (word) på 32 bit, deler vi dette tallet på fire (32 bit er 4 byte). Altså, 1284/4 = 321. I hexadesimal, tilsvarer dette \verb|0x141|.
+
  
  \begin{itemize}
      \item Dersom man nå følger samme resonnement, hva skal \verb|__RESERVED1_SIZE__| være? Finn ut dette, og endre \verb|main.c| tilsvarende.
  \end{itemize}
 
+Deretter må dere fylle inn resten av \verb|button_init()|. Se på side 136 databladet for å se hva denne konfigurasjonen gjør, og om det stemmer med hvordan knappene er koblet til portene til Target MCU.
 
 Når dere har gjort det, kan dere fylle ut de manglende bitene i \verb|main()|, som består av å legge inn logikk slik at LED-matrisen lyser når vi trykker på knapp \verb|BUTTON 1|, og skrur seg av når vi trykker på knapp \verb|BUTTON 2|. Dersom dere nå kaller \verb|make| og \verb|make flash| i terminalen, vil dere kunne se at LED-matrisen lyse av og på, avhengig av hvilken knapp som blir trykket, om alt har blitt gjort riktig.
 
@@ -73,6 +75,7 @@ and \textbf{E}vents). Sistnevnte brukes for å lage et hendelsesbasert system, o
     tro dere mener base 10.
     \item Når dere skal finne \verb|__RESERVED1_SIZE__|, så husk at \verb|DETECTMODE| starter på \verb|0x524|, som betyr at den byten slutter på \verb|0x527|. Altså starter ikke \verb|RESERVED1| på \verb|0x524|, men på \verb|0x528|.
     \item \verb|BTN| brukes veldig ofte som en forkortelse for \textit{button}.
+    \item Er knappene aktivt lav eller høy? Hvorfor trenger vi en pull-up på knappene?
     \item Sjekk ut appendiks \ref{app:bit} for hvordan man kan manipulere bits.
     \item Sjekk ut appendiks \ref{app:datablad} for hvordan man bruker databladet til å typecaste.
 
