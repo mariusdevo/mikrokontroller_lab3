@@ -19,7 +19,7 @@ typedef struct {
 
 void button_init(){ 
 	GPIO->PIN_CNF[__BUTTON_1_PIN__] = (3 << 2);
-	// Fyll inn resten av knappene
+	// Fill inn the configuration for the remaining buttons
 }
 
 int main(){
