@@ -190,7 +190,7 @@ Husk at dere må ta hensyn til rekkefølge for å kunne garantere at \verb|UART|
     \item I tillegg er det viktig å sørge for å kun lese \verb|RXD| en gang. Altså: dere skal ikke skru av mottakerregisteret når dere har lest meldingen.
 \end{itemize}
 \subsection{Sendefunksjon}
-Programmer deretter micro:bit-en til å sende \verb|A| om knappen \verb|BUTTON 1| trykkes, og \verb|B| om \verb|BUTTON 2| trykkes i \verb|main.c|.
+Programmer deretter utviklingskitet til å sende \verb|A| om knappen \verb|BUTTON 1| trykkes, og \verb|B| om \verb|BUTTON 2| trykkes i \verb|main.c|.
 
 For å motta meldingene på datamaskinen, bruker vi på Sanntidslabben programmet \verb|picocom|. Kall dette fra et terminalvindu:
 
@@ -281,7 +281,7 @@ ssize_t _read(int fd, void *buf, size_t count){
 \end{lstlisting}
 
 Skriv deretter et kort program som spør datamaskinen etter 2 heltall. Disse
-skal leses inn til micro:bit-en, som vil gange dem sammen, og sende resultatet
+skal leses inn til utviklingskitet, som vil gange dem sammen, og sende resultatet
 tilbake til datamaskinen.
 
 \subsection{Hint}\label{subsec:UART-hint}
