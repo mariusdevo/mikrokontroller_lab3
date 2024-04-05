@@ -178,6 +178,9 @@ Denne funksjonen skal ta i mot en enkel bokstav, for å sende den over til datam
 
 Sjekk ut figur 163 (\textit{UART Transmission} i side 536) i databladet til nRF52-serien for å finne ut hva dere skal gjøre. Husk å vente til sendingen er ferdig, før dere skrur av sendefunksjonaliteten.
 
+\begin{itemize}
+    \item I tillegg må dere sette \verb|EVENTS_TXRDY| lik \verb|0|. Dette er for å {\it cleare} interruptet som genereres når dere er ferdige å sende.
+\end{itemize}
 
 \cprotect\subsubsection{\lstinline{char uart_read()}}
 
