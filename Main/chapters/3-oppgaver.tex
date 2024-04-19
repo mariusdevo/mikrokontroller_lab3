@@ -345,7 +345,7 @@ I denne oppgaven, så får dere igjen utlevert ferdig \verb|gpio.h|. I tillegg, 
 
 
 \subsection{Oppgave - Grunnleggende GPIOTE og PPI}
-Først LED-matrisen konfigureres og lysene skrus av. Dere trenger ikke å konfigurere forsyningspinnene fordi \verb|GPIOTE|-modulen vil ta hånd om dette for dere. På samme måte slipper dere å konfigurere \verb|BUTTON 1| som input.
+Først LED-matrisen konfigureres og lysene skrus av. Dere trenger ikke å konfigurere LED-pins som output, siden \verb|GPIOTE|-modulen vil ta hånd om dette for dere. På samme måte slipper dere å konfigurere \verb|BUTTON 1| som input, men annen konfigurasjon som pull-ups må fremdeles konfigureres. 
 
 Dere har allerede fått utlevert headerfilene \verb|gpiote.h| og \verb|ppi.h| uten riktig informasjon. Dere må selv lese kapitlene om \verb|GPIOTE| og \verb|PPI| for å se hvordan de skal brukes og hva som skal fylles inn før dere kan bruke dem. Når dette er gjort, skal dere gjøre følgende:
 
