@@ -238,7 +238,7 @@ Dette er egentlig en dårlig implementasjon, ettersom den gjør nesten det samme
 
 Når \verb|iprintf(...)| kalles, vil et annet funksjonskall til \verb|_write_r(...)| utføres i bakgrunnen. Denne funksjonen vil deretter kalle \lstinline{ssize\_t \_write(int fd, const void * buf, size\_t count)}, som foreløpig ikke gjør noe. Grunnen til at denne finnes, er at den trengs for at programmet skal kompilere, men den er i utgangspunktet tom, fordi vi gir lenkeren flagget \verb|--specs=nosys.specs| (sjekk \verb|Makefilen|).
 
-Vi lage mange varianter av slike skrivefunksjoner om vi har et komplekst system med mange skriveenheter eller om vi har flere tråder. Denne arkitekturen har bare en kjerne og vi vil bare bruke \verb|UART|, så vi kan fint implementere en global variant av denne skrive funksjonen. For å gjøre det, legger vi til følgene i \verb|main.c|:
+Vi lage mange varianter av slike skrivefunksjoner om vi har et komplekst system med mange skriveenheter eller om vi har flere tråder. Denne arkitekturen har bare en kjerne og vi vil bare bruke \verb|UART|, så vi kan fint implementere en global variant av denne skrive funksjonen. For å gjøre dette, legger vi til følgene i \verb|main.c|:
 
 
 \begin{lstlisting}
