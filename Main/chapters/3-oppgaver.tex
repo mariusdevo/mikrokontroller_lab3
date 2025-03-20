@@ -151,15 +151,15 @@ Målet med denne funksjonen er å initialisere de nødvendige \verb|GPIO|-pinnen
 \begin{itemize}
     \item Første steg er derfor å inkludere \verb|gpio.h| (allerede implementert for dere) i \verb|uart.c|
     \item Andre steg er å konfiguere pinnene som input eller output i \verb|GPIO|-modulen.
-    \item Når pinnene er ferdig konfigurert i \verb|GPIO|-modulene, må de brukes av \verb|UART|-modulen. Dette gjøres med \verb|PSELTXD|- og \verb|PSELRXD|-registrene. I \verb|UART|-modulen konfigureres TX og RX fra perspektivet til \verb|UART|-modulen {\it inni} mikrokontrolleren. Dette er fordi \verb|UART|-modulen og \verb|GPIO|-modulen er separate enheter. Derfor blir \verb|UART|-modulen sin RX-port GPIO sin TX-port, og motsatt. 
+    \item Når pinnene er ferdig konfigurert i \verb|GPIO|-modulene, må de brukes av \verb|UART|-modulen. Dette gjøres med \verb|PSELTXD|- og \verb|PSELRXD|-registrene. %I \verb|UART|-modulen konfigureres TX og RX fra perspektivet til \verb|UART|-modulen {\it inni} mikrokontrolleren. Dette er fordi \verb|UART|-modulen og \verb|GPIO|-modulen er separate enheter. Derfor blir \verb|UART|-modulen sin RX-port GPIO sin TX-port, og motsatt. 
 \end{itemize}
 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[scale=0.20]{figures/UART_PINS.png}
-    \caption{Visualisering kobling mellom UART-modul og GPIO-modul}
-    \label{fig:uart_and_gpio}
-\end{figure}
+%\begin{figure}[ht]
+%    \centering
+%    \includegraphics[scale=0.20]{figures/UART_PINS.png}
+%    \caption{Visualisering kobling mellom UART-modul og GPIO-modul}
+%    \label{fig:uart_and_gpio}
+%\end{figure}
 
 
 
@@ -218,7 +218,7 @@ For å sende bokstaver fra datamaskinen bruker vi igjen \verb|picocom|. Standard
 
 \subsection{Oppgave - Mer avansert IO}
 
-Nå har dere en funksjon for å sende over nøyaktig en bokstav av gangen; og en funksjon for å motta nøyaktig en bokstav av gangen. Om vi ønsker å sende en en \verb|C|-streng av vilkårlig lengde må vi lage en funksjon som dette:
+Nå har dere en funksjon for å sende over nøyaktig en bokstav av gangen, og en funksjon for å motta nøyaktig en bokstav av gangen. Om vi ønsker å sende en en \verb|C|-streng av vilkårlig lengde må vi lage en funksjon som dette:
 
 \begin{lstlisting}
 void uart_send_str(char ** str){
@@ -238,7 +238,7 @@ Dette er egentlig en dårlig implementasjon, ettersom den gjør nesten det samme
 
 Når \verb|iprintf(...)| kalles, vil et annet funksjonskall til \verb|_write_r(...)| utføres i bakgrunnen. Denne funksjonen vil deretter kalle \lstinline{ssize\_t \_write(int fd, const void * buf, size\_t count)}, som foreløpig ikke gjør noe. Grunnen til at denne finnes, er at den trengs for at programmet skal kompilere, men den er i utgangspunktet tom, fordi vi gir lenkeren flagget \verb|--specs=nosys.specs| (sjekk \verb|Makefilen|).
 
-Vi lage mange varianter av slike skrivefunksjoner om vi har et komplekst system med mange skriveenheter eller om vi har flere tråder. Denne arkitekturen har bare en kjerne og vi vil bare bruke \verb|UART|, så vi kan fint implementere en global variant av denne skrive funksjonen. For å gjøre dette, legger vi til følgene i \verb|main.c|:
+Vi kan lage mange varianter av slike skrivefunksjoner dersom vi har et komplekst system med mange skriveenheter -- eller om vi har flere tråder. Denne arkitekturen har bare én kjerne og vi vil bare bruke \verb|UART|, så vi kan fint implementere en global variant av denne skrivefunksjonen. For å gjøre dette, legger vi til følgene i \verb|main.c|:
 
 
 \begin{lstlisting}
@@ -256,7 +256,7 @@ ssize_t _write(int fd, const void *buf, size_t count){
 }
 \end{lstlisting}
 
-Merk at returtypen til \lstinline{\_write} er \lstinline{ssize\_t}, mens \verb|count|-variabelen er av type \verb|size_t|. Når denne funksjonen er implementert, kan dere kalle eksempelvis skrive:
+Merk at returtypen til \lstinline{\_write} er \lstinline{ssize\_t}, mens \verb|count|-variabelen er av type \verb|size_t|. Når denne funksjonen er implementert kan dere eksempelvis skrive:
 
 
 
