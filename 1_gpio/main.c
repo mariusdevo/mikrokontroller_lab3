@@ -28,7 +28,7 @@ int main(){
 	// Configure LED Matrix
 	for(int i = 17; i <= 20; i++){
 		GPIO->DIRSET = (1 << i);
-		GPIO->OUTCLR = (1 << i);
+		GPIO->OUTSET = (1 << i);
 	}
 
 	// Configure buttons -> see button_init()
@@ -41,7 +41,7 @@ int main(){
 		 * turn on LED matrix if it is. */
 		if (!(GPIO->PIN_CNF[13] & (1 << 14))) {
 			for(int i = 17; i <= 20; i++){
-				GPIO->OUTSET = (1 << i);
+				GPIO->OUTCLR = (1 << i);
 			}
 		}
 
