@@ -1,13 +1,13 @@
 #pragma once
 
-#define GPIO ((NRF_GPIO_REGS*)0x40002000)
+#define UART ((NRF_UART_REGS*)0x40002000)
 
 typedef struct {
 	volatile uint32_t TASKS_STARTRX;
     volatile uint32_t TASKS_STOPRX;
     volatile uint32_t TASKS_STARTTX;
     volatile uint32_t TASKS_STOPTX;
-    volatile uint32_t RESERVED0[3]; //hvorfor 3 og ikke 7?
+    volatile uint32_t RESERVED0[3]; 
     volatile uint32_t TASKS_SUSPEND;
     volatile uint32_t RESERVED1[56];
     volatile uint32_t EVENTS_CTS;
@@ -39,7 +39,7 @@ typedef struct {
     volatile uint32_t BAUDRATE;
     volatile uint32_t RESERVED11[17];
     volatile uint32_t CONFIG;
-} NRF_GPIO_REGS;
+} NRF_UART_REGS;
 
 void uart_init();
 void uart_send(char letter);
